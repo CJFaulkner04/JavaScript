@@ -7,7 +7,9 @@ function calculateTip(a) {
 
 function getBillTotal(a){
     let total = calculateTip(a) + a;
-    return total.toFixed(2);
+    return total;
 }
 
-console.log('Total: ' + getBillTotal(billAmount));
+console.log('subTotal: $' + billAmount);
+console.log('tip: $' + calculateTip(billAmount).toFixed(2))
+console.log('Total: $' + getBillTotal(billAmount).toFixed(2));
