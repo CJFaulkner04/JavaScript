@@ -1,7 +1,7 @@
 let billAmount = 12;
 
 function calculateTip(a) {
-    var tip = a *.2;
+    let tip = a *.2;
     return tip.toFixed(2);
 }
 
