@@ -1,4 +1,4 @@
-let billAmount = 12;
+let billAmount = 200;
 
 function calculateTip(a) {
     let tip = a *.2;
@@ -10,4 +10,4 @@ function getBillTotal(a){
     return total.toFixed(2);
 }
 
-console.log(getBillTotal(billAmount));
+console.log('Total: ' + getBillTotal(billAmount));
