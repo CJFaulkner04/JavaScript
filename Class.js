@@ -34,8 +34,16 @@ class SoftwareDeveloper extends Job{
         super(name, industry, requireDegree, field, salary);
         this.language = language;
     }
+
+    getLanguage(){
+        return this.language;
+    }
+
+    getDegree(){
+        return this.requireDegree;
+    }
 }
 
 const Developer = new SoftwareDeveloper("Software Developer", "Technology", "None", "Web Development", 110140, "JavaScript");
 
-console.log(Developer.getName(), Developer.getFieldAndIndustry());
+console.log(Developer.getLanguage(), Developer.getDegree());
