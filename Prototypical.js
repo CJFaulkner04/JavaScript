@@ -30,4 +30,4 @@ Person.prototype = {
 let bubbly = new Person("Bubbly", "Bubbles", "Purple", 2, ['alfredo', 'rocks']);
 let joe = new Person("Joe", "Joey", "Greem", 77, ['alfredo', 'rocks']);
 bubbly.addToFamily(joe);
-console.log(bubbly.family);
+console.log(bubbly.getFamily());
