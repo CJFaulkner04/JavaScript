@@ -11,11 +11,11 @@ const users = [
 
 const findJose = users.filter(user => user.firstName === 'Jose');
 
-const listOfPremiumMembers = users.filter(user => user.isPremiumMember);
+const listOfPremiumMembers = users.filter(user => user.isPremiumMember === true).map(user => user.firstName + " " + user.lastName);
 
 const listOfLastNames = users.map(user => user.lastName);
 
-const frequentLogins = users.filter(user => user.logins > 10) .map(user => user.firstName + user.lastName);
+const frequentLogins = users.filter(user => user.logins > 10).map(user => user.firstName + " " + user.lastName);
 
 const totalOfLogins = users.reduce((total, user) => total + user.logins, 0);
 
