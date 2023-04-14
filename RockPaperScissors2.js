@@ -17,9 +17,21 @@ let player2 = {
     wins: 0
 };
 
+let player3 = {
+    name: 'Bubbly',
+    hand: hands[getHand()],
+    wins: 0
+};
+
+let player4 = {
+    name: 'Snoopy',
+    hand: hands[getHand()],
+    wins: 0
+};
+
 function playRound(p1, p2){
-    const a = p1;
-    const b = p2;
+    const a = p1.hand;
+    const b = p2.hand;
 
     if((a === 'Rock' && b === 'Rock')||(a === 'Paper' && b === 'Paper')||(a === 'Scissors' && b === 'Scissors')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
@@ -27,30 +39,49 @@ function playRound(p1, p2){
         return null;
     } else if ((a === 'Rock' && b === 'Scissors')||(a === 'Scissors' && b === 'Paper')||(a === 'Paper' && b === 'Rock')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
-        console.log(player1.name, 'Wins!');
+        console.log(p1.name, 'Wins!');
         return false;
-        
-        return player1.name;
+
     } else if ((b === 'Rock' && a === 'Scissors')||(b === 'Scissors' && a === 'Paper')||(b === 'Paper' && a === 'Rock')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
-        console.log(player2.name, 'Wins!');
+        console.log(p2.name, 'Wins!');
         return true;
     }
 }
 
-function playUntil(p1, p2, until){
-    let p1wins = 0;
-    let p2wins = 0;
-    let ties = 0;
-    while(p1wins < until || p2wins < until){
-        if(playRound(p1, p2) == true){
-            p2wins++;
-        } else if(playRound(p1, p2) == false){
-            p1wins++;
-        } else{
-            ties++;
+// ... your existing code
+
+function playGame(player1, player2, playUntil) {
+    while (player1.wins < playUntil && player2.wins < playUntil) {
+        let winner = playRound(player1, player2);
+        if (winner === false) {
+            player1.wins++;
+        } else if (winner === true) {
+            player2.wins++;
         }
+        player1.hand = hands[getHand()];
+        player2.hand = hands[getHand()];
     }
+
+    return player1.wins >= playUntil ? player1 : player2;
 }
 
-playUntil(player1.hand)
+function playTournament(player1, player2, player3, player4, playUntil) {
+    console.log("First round:");
+    let winner1 = playGame(player1, player2, playUntil);
+    console.log(winner1.name, "won the first round!");
+
+    let winner2 = playGame(player3, player4, playUntil);
+    console.log(winner2.name, "won the second round!");
+
+    console.log("Final round:");
+    let tournamentWinner = playGame(winner1, winner2, playUntil);
+    console.log(tournamentWinner.name, "is the world champion");
+}
+
+// Play a game to 3 wins
+let gameWinner = playGame(player1, player2, 3);
+console.log(gameWinner.name, "won the game!");
+
+// Play a tournament
+playTournament(player1, player2, player3, player4, 3);
