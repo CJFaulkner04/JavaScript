@@ -1,0 +1,23 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    margin: 0;
+    padding: 0;   
+}
+
+header h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+main{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+ul{
+    padding: 0;
+    list-style: none;
+}
