@@ -1,4 +1,6 @@
 const hands = ['Rock', 'Paper', 'Scissors'];
+const player1W=0;
+const player2W=0;
 
 function getHand(){
     return parseInt(Math.random()*10)%3;
@@ -6,31 +8,17 @@ function getHand(){
 
 let player1 = {
     name: 'Erin',
-    hand: hands[getHand()],
-    wins: 0
+    hand: hands[getHand()]
 };
 
 let player2 = {
     name: 'Hector',
-    hand: hands[getHand()],
-    wins: 0
+    hand: hands[getHand()]
 };
 
-let player3 = {
-    name: 'Bubbly',
-    hand: hands[getHand()],
-    wins: 0
-};
-
-let player4 = {
-    name: 'Snoopy',
-    hand: hands[getHand()],
-    wins: 0
-};
-
-function playRound(p1, p2){
-    const a = p1.hand;
-    const b = p2.hand;
+function playRound(c, d){
+    const a = c;
+    const b = d;
 
     if((a === 'Rock' && b === 'Rock')||(a === 'Paper' && b === 'Paper')||(a === 'Scissors' && b === 'Scissors')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
@@ -38,49 +26,45 @@ function playRound(p1, p2){
         return null;
     } else if ((a === 'Rock' && b === 'Scissors')||(a === 'Scissors' && b === 'Paper')||(a === 'Paper' && b === 'Rock')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
-        console.log(p1.name, 'Wins!');
+        console.log(player1.name, 'Wins!');
         return false;
-
     } else if ((b === 'Rock' && a === 'Scissors')||(b === 'Scissors' && a === 'Paper')||(b === 'Paper' && a === 'Rock')){
         console.log('Player1 hand:', a + '   Player2 hand:', b);
-        console.log(p2.name, 'Wins!');
+        console.log(player2.name, 'Wins!');
         return true;
     }
 }
 
-// ... your existing code
 
-function playGame(player1, player2, playUntil) {
-    while (player1.wins < playUntil && player2.wins < playUntil) {
-        let winner = playRound(player1, player2);
-        if (winner === false) {
-            player1.wins++;
-        } else if (winner === true) {
-            player2.wins++;
-        }
-        player1.hand = hands[getHand()];
-        player2.hand = hands[getHand()];
+const main = document.querySelector('section');
+
+let player1Wins = 0;
+let player2Wins = 0;
+
+function playGame() {
+    player1.hand = hands[getHand()];
+    player2.hand = hands[getHand()];
+
+    let result = playRound(player1.hand, player2.hand);
+    let gameResult = document.getElementById('gameResult');
+
+    if (result === null) {
+        gameResult.innerText = "It's a Tie!";
+    } else if (result === false) {
+        player1Wins++;
+        gameResult.innerText = "Erin Wins!";
+    } else {
+        player2Wins++;
+        gameResult.innerText = "Hector Wins!";
     }
 
-    return player1.wins >= playUntil ? player1 : player2;
+    updateScore();
 }
 
-function playTournament(player1, player2, player3, player4, playUntil) {
-    console.log("First round:");
-    let winner1 = playGame(player1, player2, playUntil);
-    console.log(winner1.name, "won the first round!");
-
-    let winner2 = playGame(player3, player4, playUntil);
-    console.log(winner2.name, "won the second round!");
-
-    console.log("Final round:");
-    let tournamentWinner = playGame(winner1, winner2, playUntil);
-    console.log(tournamentWinner.name, "is the world champion");
+function updateScore() {
+    let scoreDisplay = document.getElementById('scoreDisplay');
+    scoreDisplay.innerText = `Erin: ${player1Wins} - Hector: ${player2Wins}`;
 }
+  
+  
 
-// Play a game to 3 wins
-let gameWinner = playGame(player1, player2, 3);
-console.log(gameWinner.name, "won the game!");
-
-// Play a tournament
-playTournament(player1, player2, player3, player4, 3);

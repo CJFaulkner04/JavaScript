@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+        <main>
+            <div class="players">
+                
+            </div>
+            <div class="pick">
+                <div>
+                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipart-library.com%2Fimg%2F1603226.png&f=1&nofb=1&ipt=a24c1a70976668c949960aab7a0184693089107472ef3e9a7e778e7425eb2f6c&ipo=images" width="200px">
+                </div>
+                <div>
+                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipart-library.com%2Fimages%2FpToaeGgAc.png&f=1&nofb=1&ipt=356377a2bcbc02f8282151a1ea39822abdfa8d2f7d1ac7c83bd346fec6d261bd&ipo=images" width="200px">
+                </div>
+                <div>
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcreazilla-store.fra1.digitaloceanspaces.com%2Fcliparts%2F33656%2Fscissors-stationery-clipart-md.png&f=1&nofb=1&ipt=5034dcf0d0be0e7dd0773eacdc87f683fba8d62e1b24d28dfb9a7ae94327e0dc&ipo=images" width="200px">
+                </div>
+            </div>
+            <div class="button"><button onclick="playGame()">Play</button></div>
+            <h2 style="text-align: center; padding-top: 50px;">Results</h2>
+            <section class="result">
+                <p id="gameResult"></p>
+                <p id="scoreDisplay">Erin: 0 - Hector: 0</p>
+            </section>            
+        </main>
+
+
+        <script src="script.js"></script>
+    </body>
 </html>
